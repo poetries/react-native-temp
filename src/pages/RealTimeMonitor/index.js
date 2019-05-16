@@ -7,10 +7,11 @@ import { Button } from '@ant-design/react-native';
 import Color from '../../theme/color'
 import {Icon} from '@ant-design/react-native';
 
-@connect(({ app,report,monitor }) => ({
+@connect(({ app,report,monitor,roles }) => ({
     app,
     report,
-    monitor
+    monitor,
+    roles
 }))
 class MonitorScreen extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -57,21 +58,22 @@ class MonitorScreen extends React.Component {
         dispatch({
             type: 'monitor/query'
         })
-        
+        // this.props.navigation.dispatch({
+        //     type: 'roles/query'
+        // })
+        console.log(this.props.navigation)
     }
 
     render() {
-        const {app:{data},report,monitor} = this.props
-        console.log(data,'==data==')
-        console.log(report,'report==')
-        console.log(monitor,'monitor==')
+        const {app:{data},report,monitor,roles} = this.props
+
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>实时监控</Text>
                 <Button onPress={()=>this.props.navigation.navigate('Login')}>Login</Button>
                 <Button onPress={()=>this.props.navigation.navigate('MonitorDetail')}>MonitorDetail</Button>
                 <ScrollView>
-                    {monitor.data && monitor.data.map(v=><Text key={`${v.customer_id}_${v.date}`}>{v.customer_id}-{v.customer_name}-{v.date}</Text>)}
+                    {monitor && monitor.data.map(v=><Text key={v.customer_id}>{v.customer_id}-{v.customer_name}</Text>)}
                 </ScrollView>
             </View>
         );

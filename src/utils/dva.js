@@ -16,6 +16,6 @@ export default function(options) {
 
   app.start = container => () => <Provider store={store}>{container}</Provider>
   app.getStore = () => store
-
+  window.g_app = app;
   return app
 }

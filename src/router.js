@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'; // Version can be specified in package.json
+import { createStackNavigator, createBottomTabNavigator,StackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import {
     createReduxContainer,
     createReactNavigationReduxMiddleware,
@@ -101,6 +101,7 @@ const AppTabNav = createBottomTabNavigator(
         },
     },
     {
+        lazy:true,
         tabBarOptions:{
             activeTintColor: Color.brand.primary,
             labelStyle: {

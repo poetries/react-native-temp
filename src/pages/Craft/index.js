@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,ScrollView } from 'react-native';
 import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
@@ -7,9 +7,9 @@ import { Query } from "react-apollo";
 import { StackActions, NavigationActions } from 'react-navigation'; // Version can be specified in package.json
 import Color from '../../theme/color'
 
-@connect(({ app }) => {
-    return app;
-})
+@connect(({ app,report }) => ({
+    report
+}))
 class CraftScreen extends React.Component {
     static navigationOptions = {
         title:'工艺',
@@ -24,11 +24,22 @@ class CraftScreen extends React.Component {
             flex:1
         }
       };
+    componentDidMount(){
+        const {dispatch} = this.props 
+  
+        dispatch({
+            type: 'report/query'
+        })
+    }
     render() {
-        console.log(this.props, this.context)
+        const {report:{data=[]}} = this.props
+
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>工艺</Text>
+                <ScrollView>
+                    {data && data.map(v=><Text key={v.advertiser_id}>花费：{v.cost}</Text>)}
+                </ScrollView>
             </View>
         );
     }

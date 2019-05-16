@@ -1,18 +1,17 @@
 
-import {queryReport} from '../../services/api'
+import {queryRoles} from '../../services/api'
 
 export default {
-    namespace: 'report',
+    namespace: 'roles',
     state: {
        data: []
     },
     effects: {
         *query({payload},{put,call,select}) {
-            const res = yield call(queryReport,payload)
-            console.log(res.data.list)
+            const res = yield call(queryRoles,payload)
             yield put({
                 type: 'save',
-                payload: res.data.list || [],
+                payload: res && res.data && (res.data || {}).list || [],
             });
         }
     },

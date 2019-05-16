@@ -1,4 +1,5 @@
 import hash from 'hash.js';
+import { NavigationActions } from 'react-navigation';
 import { getOrigin } from './config'
 
 const codeMessage = {
@@ -85,9 +86,12 @@ export default function request(url, option) {
             return response.json();
           })
           .then(res=>{
+            
             // 401统一拦截到login
             if(res.code == 401) {
-
+              // https://reactnavigation.org/docs/zh-Hans/navigating-without-navigation-prop.html
+              const toLogin = NavigationActions.navigate({routeName: 'Login'})
+              window.g_app._store.dispatch(toLogin)
             }
             if(res.code == 500) {
               alert('服务器繁忙，请稍后再试')
@@ -98,7 +102,23 @@ export default function request(url, option) {
             }
             return res
           })
-            .catch((error) => {
-            console.error(error);
-            });
+          .catch(e => {
+            const status = e.name;
+            if (status === 401) {
+              alert('您还没有登录')
+              return;
+            }
+            // environment should not be used
+            if (status === 403) {
+              alert('抱歉，没有权限访问')
+              return;
+            }
+            if (status <= 504 && status >= 500) {
+              alert('抱歉，服务器出错了')
+              return;
+            }
+            if (status >= 404 && status < 422) {
+              alert('抱歉，接口不存在，请联系管理员')
+            }
+          });
 }

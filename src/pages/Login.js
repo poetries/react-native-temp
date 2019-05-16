@@ -1,21 +1,42 @@
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withApollo } from 'react-apollo';
 import { Text, View, StyleSheet, TextInput,Alert,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import Toast, {DURATION} from 'react-native-easy-toast'
 
-
-
+@connect(({ user }) => ({
+	user
+}))
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            userName:'',
+            username:'',
             password:''
          };
     }
     onLogin(){
+			const {dispatch} = this.props
 			const { navigate } = this.props.navigation;
-			navigate('Home');
+			const {username,password} = this.state
+			dispatch({
+				type: 'user/login',
+				payload: {
+					username,
+					password
+				},
+				callback: res=>{
+					if(res.code == 200) {
+						alert('登录成功')
+						navigate('Monitor');
+					}else {
+						this.refs.toast.show(res.message);
+					}
+				}
+			})
+			
     }
 
   render() {
@@ -32,7 +53,7 @@ class Login extends Component {
 									style={styles.textinput} 
 									placeholder='请输入账号'
 									onChangeText = {(text) => {
-											this.setState({userName: text});
+											this.setState({username: text});
 									}}
 							/>
 					</View>
@@ -77,6 +98,10 @@ class Login extends Component {
 						</View>
 					</View>
 				</View>
+				<Toast 
+						ref="toast"
+						position='top'
+					/>
       </View>
     );
   }
@@ -164,4 +189,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Login;
+export default withApollo(Login)
