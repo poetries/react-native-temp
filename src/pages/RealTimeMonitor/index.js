@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,ScrollView } from 'react-native';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { StackActions, NavigationActions } from 'react-navigation'; // Version can be specified in package.json
@@ -7,9 +7,11 @@ import { Button } from '@ant-design/react-native';
 import Color from '../../theme/color'
 import {Icon} from '@ant-design/react-native';
 
-@connect(({ app }) => {
-    return app;
-})
+@connect(({ app,report,monitor }) => ({
+    app,
+    report,
+    monitor
+}))
 class MonitorScreen extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => {
         const {navigate} = navigation;
@@ -45,16 +47,32 @@ class MonitorScreen extends React.Component {
     };
 
     componentDidMount(){
-
+        const {dispatch} = this.props 
+        dispatch({
+            type: 'app/query'
+        })
+        dispatch({
+            type: 'report/query'
+        })
+        dispatch({
+            type: 'monitor/query'
+        })
+        
     }
 
     render() {
+        const {app:{data},report,monitor} = this.props
+        console.log(data,'==data==')
+        console.log(report,'report==')
+        console.log(monitor,'monitor==')
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>实时监控</Text>
                 <Button onPress={()=>this.props.navigation.navigate('Login')}>Login</Button>
                 <Button onPress={()=>this.props.navigation.navigate('MonitorDetail')}>MonitorDetail</Button>
-                
+                <ScrollView>
+                    {monitor.data && monitor.data.map(v=><Text key={`${v.customer_id}_${v.date}`}>{v.customer_id}-{v.customer_name}-{v.date}</Text>)}
+                </ScrollView>
             </View>
         );
     }

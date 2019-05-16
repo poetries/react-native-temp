@@ -19,8 +19,8 @@ class MonitorDetailScreen extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>实时监控</Text>
-                <Button onPress={()=>this.props.navigation.navigate('Login')}>Login</Button>
+                <Text>详情页</Text>
+                <Button onPress={()=>this.props.navigation.goBack()}>返回</Button>
             </View>
         );
     }

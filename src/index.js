@@ -2,13 +2,16 @@ import React from 'react';
 import dva from './utils/dva';
 import Apollo from './utils/apollo';
 import Router, { routerMiddleware, routerReducer } from './router';
+import Models from './models/index';
 
-import appModel from './models/app';
-
+const rootModel = []
+Object.values(Models).forEach(value=>{
+    rootModel.push(value)
+})
 
 const dvaApp = dva({
     initialState: {},
-    models: [appModel],
+    models: rootModel,
     extraReducers: { router: routerReducer },
     onAction: [routerMiddleware],
     onError(e) {
