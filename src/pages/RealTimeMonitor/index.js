@@ -78,7 +78,7 @@ class MonitorScreen extends React.Component {
         <View style={{ flex: 1}}>
             <ScrollView style={{paddingBottom: 20 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Button onPress={()=>Actions.monitorDetail({title: '监控详情页',id:99,author:'poetry'})}>跳转到详情</Button>
+                    <Button onPress={()=>Actions.monitorDetail({title: '监控详情页',id:99,author:'poetry'})}>跳转到详情1</Button>
                     {monitor && monitor.data.map(v=><Text key={v.customer_id}>{v.customer_id}-{v.customer_name}</Text>)}
                 </View>
             </ScrollView>

@@ -13,3 +13,12 @@ react-native run-ios
 - `dva` 
 - `react-navigation`
 - `react-redux`
+
+## 打包
+
+### 安卓平台
+
+```bash
+cd android
+ ./gradlew assembleRelease
+```

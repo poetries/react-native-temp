@@ -4838,12 +4838,13 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-native-app-intro@^1.1.5:
+"react-native-app-intro@https://github.com/merryjs/react-native-app-intro":
   version "1.1.5"
-  resolved "https://registry.npm.taobao.org/react-native-app-intro/download/react-native-app-intro-1.1.5.tgz#34a2d2265b2d654d31bae743c404856c37448692"
+  resolved "https://github.com/merryjs/react-native-app-intro#b5bbdbbd8ff8be0842d22c77a9d857cc30e413d8"
   dependencies:
     assign-deep "^0.4.5"
-    react-native-swiper "git+https://github.com/FuYaoDe/react-native-swiper.git"
+    prop-types "^15.6.0"
+    react-native-swiper "https://github.com/merryjs/react-native-swiper.git"
 
 react-native-camera-roll-picker@^1.2.1:
   version "1.3.0"
@@ -4953,6 +4954,10 @@ react-native-menu@^0.23.0:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"
     react-timer-mixin "^0.13.3"
+
+react-native-message-bar@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.npm.taobao.org/react-native-message-bar/download/react-native-message-bar-2.0.10.tgz#34632bdf2cbfe0f51ae4f1e9a91c42b4394a11c2"
 
 react-native-modal-popover@^0.0.12:
   version "0.0.12"
@@ -5074,10 +5079,12 @@ react-native-swipeout@^2.2.2, react-native-swipeout@^2.3.6:
     prop-types "^15.5.10"
     react-tween-state "^0.1.5"
 
-"react-native-swiper@git+https://github.com/FuYaoDe/react-native-swiper.git":
+"react-native-swiper@https://github.com/merryjs/react-native-swiper.git":
   version "1.4.4"
-  resolved "git+https://github.com/FuYaoDe/react-native-swiper.git#a6417ff41a8b2d490bdcc4541015ab35736d4595"
+  resolved "https://github.com/merryjs/react-native-swiper.git#2051e49de8696fa96612d0262a32ec902b631394"
   dependencies:
+    create-react-class "^15.6.2"
+    prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
 react-native-tab-navigator@^0.3.4:
