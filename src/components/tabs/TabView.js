@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars,global-require */
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
-import Search from './node_modules/react-native-search-box';
-import { List, ListItem,Header,Icon } from './node_modules/react-native-elements'
-import { Actions } from './node_modules/react-native-router-flux';
-import ScrollableTabView, {ScrollableTabBar} from './node_modules/react-native-scrollable-tab-view'
+import Search from 'react-native-search-box';
+import { List, ListItem,Header,Icon } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux';
+import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
 import TabItem from './TabItem'
 
 export default class TabView extends Component {
@@ -22,7 +22,7 @@ export default class TabView extends Component {
     const {queryKeys,fetchGithubList} = this.props
  
     return   <ScrollableTabView
-            style={{marginTop: 60}}
+            style={{marginTop: -1,zIndex:2}}
             tabBarUnderlineColor={"#e7e7e7"}
             ref="scrollableTabView"
             tabBarInactiveTextColor='mintcream'

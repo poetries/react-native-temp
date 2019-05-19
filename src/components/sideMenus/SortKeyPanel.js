@@ -4,7 +4,7 @@ import { View, Text, ScrollView, ActivityIndicator} from 'react-native';
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { List, ListItem,Icon,CheckBox } from 'react-native-elements'
+import { ListItem,Icon,CheckBox } from 'react-native-elements'
 import queryKeys from '../../config/queryKeys.json'
 import AppStyles from '../../theme/styles';
 
@@ -23,10 +23,10 @@ export default class SortKeyPanel extends Component {
    
     return  (
       <ScrollView>
-         <List  containerStyle={{marginTop:-1}}>
             {
               queryKeys.map((item) => (
                 <ListItem
+                  containerStyle={{marginTop:-1}}
                   key={item.name}
                   title={item.name}
                   rightIcon={{color:'#fff'}}
@@ -39,7 +39,6 @@ export default class SortKeyPanel extends Component {
                 />
               ))
             }
-          </List>
        </ScrollView>
     )
   }

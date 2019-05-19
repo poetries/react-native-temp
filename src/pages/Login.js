@@ -44,9 +44,6 @@ class Login extends Component {
 		const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={styles.avatarview}>
-          <Text style={styles.avatarTitle}>账号登录</Text>
-        </View>
         <View style={styles.inputview}>
 					<View style={styles.inputItem}>
 							<Icon name='user' style={styles.item_icon} />

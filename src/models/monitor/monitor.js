@@ -9,9 +9,10 @@ export default {
     effects: {
         *query({payload},{put,call,select}) {
             const res = yield call(queryMonitorData,payload)
+            console.log(res,'===res==')
             yield put({
                 type: 'save',
-                payload: res.data.list || [],
+                payload: res && res.data && res.data.list || [],
             });
         }
     },

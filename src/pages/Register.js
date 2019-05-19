@@ -21,9 +21,6 @@ class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.avatarview}>
-          <Text style={styles.avatarTitle}>账号注册</Text>
-        </View>
         <View style={styles.inputview}>
 					<View style={styles.inputItem}>
 							<Icon name='home' style={styles.item_icon} />

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars,global-require */
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
-import Search from './node_modules/react-native-search-box';
-import { List, ListItem,Header,Icon } from './node_modules/react-native-elements'
-import { Actions } from './node_modules/react-native-router-flux';
-import ScrollableTabView, {ScrollableTabBar} from './node_modules/react-native-scrollable-tab-view'
+import Search from 'react-native-search-box';
+import { ListItem,Header,Icon } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux';
+import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
 
 export default class TabItem extends Component {
     static componentName = 'TabItem';
@@ -21,7 +21,7 @@ export default class TabItem extends Component {
       const {list} = this.props
 
       const content =  list && list.length
-      ? <List style={{paddingBottom:60}}>
+      ? <View style={{paddingBottom:60}}>
       {
            list.map(v => (
                     <ListItem
@@ -33,7 +33,7 @@ export default class TabItem extends Component {
                     />
               ))
       }
-    </List>
+    </View>
     : null
 
       return <View>

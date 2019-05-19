@@ -9,7 +9,7 @@ import AppRoutes from './navigation/index';
 import SplashScreen from 'react-native-splash-screen';
 import AppIntro from 'react-native-app-intro';
 import AsyncStorageHelper from './utils/AsyncStorageHelper';
-
+import { MenuProvider } from 'react-native-popup-menu';
 import Models from './models/index';
 
 const RouterWithRedux = connect()(Router);
@@ -106,7 +106,9 @@ class App extends React.Component {
           }
         return (
             <Apollo>
+              <MenuProvider>
                 <RouterWithRedux  scenes={AppRoutes} />
+              </MenuProvider>
             </Apollo>
         );
     }

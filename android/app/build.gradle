@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rn_temp9099"
+        applicationId "com.rn_temp0489"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -155,6 +155,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-share')
+    implementation project(':react-native-popover-menu')
+    implementation project(':react-native-google-analytics-bridge')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-gesture-handler')
@@ -169,3 +172,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+project.ext.vectoricons = [
+    iconFontNames: ['iconfont.ttf' ] //添加你需要赋值的字符文件
+]

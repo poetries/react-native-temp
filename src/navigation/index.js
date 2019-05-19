@@ -6,8 +6,8 @@ import AppConfig from '../constants/config';
 import { Actions, Scene } from 'react-native-router-flux';
 import { Icon,Header } from 'react-native-elements';
 import TabIcon from '../components/tabs/TabIcon';
-import RealTimeScreen from '../pages/RealTimeMonitor';
-import DetailScreen from '../pages/RealTimeMonitor/Detail';
+import Demo from '../pages/Demo';
+import DetailScreen from '../pages/Demo/Detail';
 import CraftScreen from '../pages/Craft';
 import AnalyseScreen from '../pages/Analyse';
 import MsgScreen from '../pages/Msg';
@@ -40,28 +40,28 @@ const titleStyles = {
               iconName={'md-home'}
               iconType={'ionicon'}
               icon={TabIcon}
-              component={RealTimeScreen}
-              navBar={()=><Header
-                leftComponent={
-                  <Icon
-                    name='menu'
-                    type='EvilIcons'
-                    color="#fff"
-                    underlayColor="#03a9f4"
-                    onPress={()=>Actions.login()}
-                />
-                }
-                centerComponent={{ text: '首页', style: { color: AppStyles.navbarTitle.color} }}
-                rightComponent={<Icon
-                  name='search'
-                  type='EvilIcons'
-                  color="#fff"
-                  underlayColor="#03a9f4"
-                  onPress={()=>Actions.login()}
-                />}
-                containerStyle={{backgroundColor:AppStyles.navbar.backgroundColor,height:70,marginTop:-15}}
-              />}
-              hideNavBar={false}
+              component={Demo}
+              // navBar={()=><Header
+              //   leftComponent={
+              //     <Icon
+              //       name='menu'
+              //       type='EvilIcons'
+              //       color="#fff"
+              //       underlayColor="#03a9f4"
+              //       onPress={()=>Actions.login()}
+              //   />
+              //   }
+              //   centerComponent={{ text: '首页', style: { color: AppStyles.navbarTitle.color} }}
+              //   rightComponent={<Icon
+              //     name='ios-more'
+              //     type='ionicon'
+              //     color="#fff"
+              //     underlayColor="#03a9f4"
+              //     onPress={(e)=>console.log(e)}
+              //   />}
+              //   containerStyle={{backgroundColor:AppStyles.navbar.backgroundColor,height:70,marginTop:-15}}
+              // />}
+              hideNavBar={true}
             />
             <Scene
               {...navbarPropsTabs}
@@ -114,7 +114,10 @@ const titleStyles = {
 
         {/** 以下是页面跳转 **/}
         <Scene
+            {...navbarPropsTabs}
             key={'login'}
+            title="登录"
+            // initial={true}
             component={Login}
           />
           <Scene

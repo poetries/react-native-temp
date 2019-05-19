@@ -20,9 +20,6 @@ class ForgetPwd extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.avatarview}>
-          <Text style={styles.avatarTitle}>找回密码</Text>
-        </View>
         <View style={styles.inputview}>
             <View style={styles.inputItem}>
                 <Icon name='smartphone' style={styles.item_icon} />

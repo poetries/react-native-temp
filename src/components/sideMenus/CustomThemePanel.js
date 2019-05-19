@@ -4,7 +4,7 @@ import { View, Text, ScrollView, ActivityIndicator,TouchableOpacity } from 'reac
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { List, ListItem,Icon,ButtonGroup } from 'react-native-elements'
+import { ListItem,Icon,ButtonGroup } from 'react-native-elements'
 import Utils from '../../utils/Utils'
 import storage from '../../utils/Storage'
 

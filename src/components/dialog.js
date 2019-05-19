@@ -1,7 +1,7 @@
-import React, { Component } from './node_modules/react';
-import PropTypes from './node_modules/prop-types';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, Modal } from 'react-native';
-import Spinkit from './node_modules/react-native-spinkit';
+import Spinkit from 'react-native-spinkit';
 import AppStyle from '../theme/styles';
 
 function hide() {

@@ -4,12 +4,12 @@ import { View, Text, ScrollView, ActivityIndicator} from 'react-native';
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { List, ListItem,Icon,CheckBox } from 'react-native-elements'
+import {ListItem,Icon,CheckBox } from 'react-native-elements'
 import queryKeys from '../../config/queryKeys.json'
 import AppStyles from '../../theme/styles';
 
-export default class RemoveKeyPanel extends Component {
-  static componentName = 'RemoveKeyPanel';
+export default class CustomKeyPanel extends Component {
+  static componentName = 'CustomKeyPanel';
 
   constructor(props) {
     super(props);
@@ -23,12 +23,12 @@ export default class RemoveKeyPanel extends Component {
    
     return  (
       <ScrollView>
-         <List  containerStyle={{marginTop:-2}}>
             {
               queryKeys.map((item) => (
                 <ListItem
                   key={item.name}
                   title={item.name}
+                  containerStyle={{marginTop:-2}}
                   rightIcon={<CheckBox
                     containerStyle={{backgroundColor:'#fff',borderColor:'#fff'}}
                     center
@@ -45,7 +45,6 @@ export default class RemoveKeyPanel extends Component {
                 />
               ))
             }
-          </List>
        </ScrollView>
     )
   }
