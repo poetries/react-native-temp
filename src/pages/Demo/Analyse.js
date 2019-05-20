@@ -9,10 +9,22 @@ import { Button } from '@ant-design/react-native';
     return app;
 })
 class AnalyseScreen extends React.Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+         
+        };
+      }
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>分析</Text>
+                <Text  style={{
+                    fontSize:20,
+                    color:'#888',
+                    fontFamily:'iconfont'
+                  }}>iconfont编码测试：{'\ue623'}</Text>
             </View>
         );
     }

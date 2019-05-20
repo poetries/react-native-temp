@@ -20,7 +20,7 @@ import Dialog, {
     SlideAnimation,
     ScaleAnimation,
   } from 'react-native-popup-dialog';
-  import DiyIcon from './../../utils/DiyIcon';
+  import DiyIcon from '../../utils/DiyIcon';
 
 @connect(({ app,report,monitor,roles }) => ({
     app,
@@ -150,7 +150,7 @@ class MonitorScreen extends React.Component {
                       fontSize:20,
                       color:'#888',
                       fontFamily:'iconfont'
-                    }}>iconfont图标unicde编码测试：{'\ue623'}</Text>
+                    }}>iconfont图标unicde编码测试：{'\ue656'}</Text>
                     <Button title="Show" onPress={()=>this.setState({ show: true })} >打开</Button>
                     <DiyIcon  name="work" size={50}  style={{fontSize:20,color:'#f00'}}/>
                     <Button

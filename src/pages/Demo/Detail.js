@@ -11,6 +11,13 @@ import {Icon} from '@ant-design/react-native';
 })
 class MonitorDetailScreen extends React.Component {
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+         
+        };
+      }
     componentDidMount(){
 
     }

@@ -6,12 +6,12 @@ import AppConfig from '../constants/config';
 import { Actions, Scene } from 'react-native-router-flux';
 import { Icon,Header } from 'react-native-elements';
 import TabIcon from '../components/tabs/TabIcon';
-import Demo from '../pages/Demo';
+import Home from '../pages/Demo/home';
 import DetailScreen from '../pages/Demo/Detail';
-import CraftScreen from '../pages/Craft';
-import AnalyseScreen from '../pages/Analyse';
-import MsgScreen from '../pages/Msg';
-import UserScreen from '../pages/UserCenter';
+import CraftScreen from '../pages/Demo/Craft';
+import AnalyseScreen from '../pages/Demo/Analyse';
+import MsgScreen from '../pages/Demo/Msg';
+import UserScreen from '../pages/Demo/UserCenter';
 import Login from '../pages/Login';
 import ForgetPwd from '../pages/ForgetPwd';
 import Register from '../pages/Register';
@@ -40,7 +40,7 @@ const titleStyles = {
               iconName={'md-home'}
               iconType={'ionicon'}
               icon={TabIcon}
-              component={Demo}
+              component={MsgScreen}
               // navBar={()=><Header
               //   leftComponent={
               //     <Icon
@@ -71,7 +71,7 @@ const titleStyles = {
               iconName={'md-trending-up'}
               iconType={'ionicon'}
               icon={TabIcon}
-              component={CraftScreen}
+              component={MsgScreen}
               rightTitle={'保存'}
               leftTitle={'编辑'}
               leftButtonTextStyle={{fontSize:14}}
