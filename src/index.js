@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import dva from './utils/dva';
+import { Icon } from 'react-native-elements';
 import Apollo from './utils/apollo';
 import Router, { routerMiddleware, routerReducer } from './navigation';
-// import SplashScreen from 'react-native-splash-screen';
-// import AppIntro from 'react-native-app-intro';
+import SplashScreen from 'react-native-splash-screen';
+import AppIntro from 'react-native-app-intro';
 import AsyncStorageHelper from './utils/AsyncStorageHelper';
 import { MenuProvider } from 'react-native-popup-menu';
 import Models from './models/index';
@@ -49,16 +50,16 @@ class App extends React.Component {
         };
       }
     componentDidMount() {
-        // do anything while splash screen keeps, use await to wait for an async task.
-        // SplashScreen.hide();
+       // do anything while splash screen keeps, use await to wait for an async task.
+        SplashScreen.hide();
     
-        // AsyncStorageHelper.get('app.intro.done', (err, result) => {
-        //   if (result !== 'true') {
-        //     this.setState({
-        //       hasShowIntro: false,
-        //     });
-        //   }
-        // });
+        AsyncStorageHelper.get('app.intro.done', (err, result) => {
+          if (result !== 'true') {
+            this.setState({
+              hasShowIntro: false,
+            });
+          }
+        });
     }
     onSkipBtnHandle = () => {
         this.setState({
@@ -74,32 +75,32 @@ class App extends React.Component {
         AsyncStorageHelper.set('app.intro.done', 'true');
     };
     render() {
-        // if (!this.state.hasShowIntro) {
-        //     return (<AppIntro
-        //       onDoneBtnClick={this.doneBtnHandle}
-        //       onSkipBtnClick={this.onSkipBtnHandle}
-        //       skipBtnLabel={'跳过'}
-        //       doneBtnLabel={'已阅'}
-        //     >
-        //       <View style={[styles.slide, { backgroundColor: '#03a9f4' }]}>
-        //         <View level={10}><Icon name={'fingerprint'} color={'#fff'} size={100} /></View>
-        //         <View level={8}><Text style={styles.text}> 正则表达式练习 </Text></View>
-        //       </View>
-        //       <View style={[styles.slide, { backgroundColor: '#50616D' }]}>
-        //         <View level={-10}><Icon name={'polymer'} color={'#fff'} size={100} /></View>
-        //         <View level={20}><Text style={styles.text}> 算法动画演示与教学 </Text></View>
-        //       </View>
-        //       <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
-        //         <View level={-10}><Icon name={'find-in-page'} color={'#fff'} size={100} /></View>
-        //         <View level={-20}><Text style={styles.text}> 设计模式学习 </Text></View>
-        //       </View>
-        //       <View style={[styles.slide, { backgroundColor: '#03a9f4' }]}>
-        //         <View level={-5}><Text style={styles.text}>还有：</Text></View>
-        //         <View level={15}><Text style={styles.text}> ？</Text></View>
-        //         <View level={20}><Text style={styles.text}>...</Text></View>
-        //       </View>
-        //     </AppIntro>);
-        // }
+        if (!this.state.hasShowIntro) {
+            return (<AppIntro
+              onDoneBtnClick={this.doneBtnHandle}
+              onSkipBtnClick={this.onSkipBtnHandle}
+              skipBtnLabel={'跳过'}
+              doneBtnLabel={'已阅'}
+            >
+              <View style={[styles.slide, { backgroundColor: '#03a9f4' }]}>
+                <View level={10}><Icon name={'fingerprint'} color={'#fff'} size={100} /></View>
+                <View level={8}><Text style={styles.text}> 正则表达式练习 </Text></View>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#50616D' }]}>
+                <View level={-10}><Icon name={'polymer'} color={'#fff'} size={100} /></View>
+                <View level={20}><Text style={styles.text}> 算法动画演示与教学 </Text></View>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
+                <View level={-10}><Icon name={'find-in-page'} color={'#fff'} size={100} /></View>
+                <View level={-20}><Text style={styles.text}> 设计模式学习 </Text></View>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#03a9f4' }]}>
+                <View level={-5}><Text style={styles.text}>还有：</Text></View>
+                <View level={15}><Text style={styles.text}> ？</Text></View>
+                <View level={20}><Text style={styles.text}>...</Text></View>
+              </View>
+            </AppIntro>);
+        }
         return (
             <Apollo>
                 <MenuProvider>

@@ -27,7 +27,7 @@
     "react": "16.8.6",
     "react-apollo": "^2.5.5",
     "react-native": "0.59.8",
-    "react-native-app-intro": "^1.1.5",
+    "react-native-app-intro": "https://github.com/merryjs/react-native-app-intro",
     "react-native-check-box": "^2.1.7",
     "react-native-collapsible": "^1.4.0",
     "react-native-drawer": "^2.5.1",
