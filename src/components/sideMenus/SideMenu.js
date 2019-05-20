@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, StyleSheet,ActivityIndicator,FlatList,Avatar} from 'react-native';
 import { ListItem,Icon } from 'react-native-elements'
-import { Actions } from 'react-native-router-flux';
 import { sideMenuConfig } from '../../config/sideMenu'
 
 export default class SideMenu extends Component  {
   render () {
+    const {navigation:{navigate}} = this.props
     return (
       <View>
           {
@@ -21,7 +21,7 @@ export default class SideMenu extends Component  {
                   type={item.type}
                   color="#fff"
                 />}
-                onPress={()=>item.action?item.action():null}
+                onPress={()=>item.action?item.action(navigate):null}
                 rightIcon={{color:'#fff'}}
                 titleStyle={{color:'#fff'}}
               />

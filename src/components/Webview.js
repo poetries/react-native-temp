@@ -14,7 +14,6 @@ import {
     Text,
     View,
 } from 'react-native'
-import { Actions } from 'react-native-router-flux';
 
 const WEBVIEW_REF = 'webview';
 

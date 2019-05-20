@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator} from 'react-native';
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { ListItem,Icon,CheckBox } from 'react-native-elements'
 import queryKeys from '../../config/queryKeys.json'
 import AppStyles from '../../theme/styles';

@@ -90,7 +90,7 @@ export default function request(url, option) {
             // 401统一拦截到login
             if(res.code == 401) {
               // https://reactnavigation.org/docs/zh-Hans/navigating-without-navigation-prop.html
-              const toLogin = NavigationActions.navigate({routeName: 'Login'})
+              const toLogin = NavigationActions.navigate({routeName: 'Auth'})
               window.g_app._store.dispatch(toLogin)
             }
             if(res.code == 500) {

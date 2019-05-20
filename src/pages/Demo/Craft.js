@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Text, Button,ScrollView } from 'react-native';
+import { View, Text,ScrollView } from 'react-native';
 import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
+import { Button } from '@ant-design/react-native';
 import {  ListItem,Header,Icon,Divider } from 'react-native-elements'
 import { connect } from 'react-redux';
 import { Query } from "react-apollo";
-import { Actions, Scene } from 'react-native-router-flux';
 import appConfig from '../../theme/styles'
+import Dialog, {
+    DialogTitle,
+    DialogContent,
+    DialogFooter,
+    DialogButton,
+    SlideAnimation,
+    ScaleAnimation,
+  } from 'react-native-popup-dialog';
 
 @connect(({ app,report }) => ({
     report
@@ -31,6 +39,16 @@ class CraftScreen extends React.Component {
       </View>
         }
       };
+      state = {
+        visible: true,
+        isOpen:false,
+        customBackgroundDialog: false,
+        defaultAnimationDialog: false,
+        scaleAnimationDialog: false,
+        slideAnimationDialog: false,
+        show: false,
+        theme: '#03a9f4'
+    }
     componentDidMount(){
         const {dispatch} = this.props 
   
@@ -39,11 +57,133 @@ class CraftScreen extends React.Component {
         })
     }
     render() {
-        const {report:{data=[]}} = this.props
+        const {report:{data=[]},navigation:{navigate}} = this.props
 
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>工艺</Text>
+                <Button onPress={()=>navigate('MonitorDetail',{name:12,title:'poetry'})}>跳转到详情1</Button>
+                    <Button
+                          onPress={() => {
+                            this.setState({ defaultAnimationDialog: true });
+                          }}
+                        >Show Dialog</Button>
+                        <Button
+                        onPress={() => {
+                          this.setState({ slideAnimationDialog: true });
+                        }}
+                      >slideAnimationDialog</Button>
+                      <Button
+                      onPress={() => {
+                        this.setState({ scaleAnimationDialog: true });
+                      }}
+                    >scaleAnimationDialog</Button>
+              
+                  <Dialog
+                      onDismiss={() => {
+                        this.setState({ defaultAnimationDialog: false });
+                      }}
+                      width={0.9}
+                      visible={this.state.defaultAnimationDialog}
+                      rounded
+                      actionsBordered
+                      // actionContainerStyle={{
+                      //   height: 100,
+                      //   flexDirection: 'column',
+                      // }}
+                      dialogTitle={
+                        <DialogTitle
+                          title="Popup Dialog - Default Animation"
+                          style={{
+                            backgroundColor: '#F7F7F8',
+                          }}
+                          hasTitleBar={false}
+                          align="left"
+                        />
+                      }
+                      footer={
+                        <DialogFooter>
+                          <DialogButton
+                            text="CANCEL"
+                            bordered
+                            onPress={() => {
+                              this.setState({ defaultAnimationDialog: false });
+                            }}
+                            key="button-1"
+                          />
+                          <DialogButton
+                            text="OK"
+                            bordered
+                            onPress={() => {
+                              this.setState({ defaultAnimationDialog: false });
+                            }}
+                            key="button-2"
+                          />
+                        </DialogFooter>
+                      }
+                    >
+                      <DialogContent
+                        style={{
+                          backgroundColor: '#F7F7F8',
+                        }}
+                      >
+                        <Text>Default Animation</Text>
+                        <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
+                      </DialogContent>
+                    </Dialog>
+                    <Dialog
+                    onDismiss={() => {
+                      this.setState({ slideAnimationDialog: false });
+                    }}
+                    onTouchOutside={() => {
+                      this.setState({ slideAnimationDialog: false });
+                    }}
+                    visible={this.state.slideAnimationDialog}
+                    dialogTitle={<DialogTitle title="Popup Dialog - Slide Animation" />}
+                    dialogAnimation={new SlideAnimation({ slideFrom: 'bottom' })}
+                  >
+                    <DialogContent>
+                      <Text>Slide Animation</Text>
+                    </DialogContent>
+                  </Dialog>
+
+                <Dialog
+                    onTouchOutside={() => {
+                      this.setState({ scaleAnimationDialog: false });
+                    }}
+                    width={0.9}
+                    visible={this.state.scaleAnimationDialog}
+                    dialogAnimation={new ScaleAnimation()}
+                    onHardwareBackPress={() => {
+                      console.log('onHardwareBackPress');
+                      this.setState({ scaleAnimationDialog: false });
+                      return true;
+                    }}
+                    dialogTitle={
+                      <DialogTitle
+                        title="Popup Dialog - Scale Animation"
+                        hasTitleBar={false}
+                      />
+                    }
+                    actions={[
+                      <DialogButton
+                        text="DISMISS"
+                        onPress={() => {
+                          this.setState({ scaleAnimationDialog: false });
+                        }}
+                        key="button-1"
+                      />,
+                    ]}
+                  >
+                    <DialogContent>
+                      <Button
+                        title="Show Dialog - Default Animation"
+                        onPress={() => {
+                          this.setState({ defaultAnimationDialog: true });
+                        }}
+                      />
+                    </DialogContent>
+                  </Dialog>
                 <ScrollView>
                     {data && data.map(v=><Text key={v.advertiser_id}>花费：{v.cost}</Text>)}
                 </ScrollView>

@@ -1,4 +1,3 @@
-import { Actions } from 'react-native-router-flux';
 
 export const userCenterConfig = {
     githubPopular: {

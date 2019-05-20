@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
-import { Actions, Scene } from 'react-native-router-flux';
 import { Button } from '@ant-design/react-native';
 import {Icon} from '@ant-design/react-native';
 import appConfig from '../../theme/styles'
@@ -15,6 +14,7 @@ class MonitorDetailScreen extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => {
         const {navigate} = navigation;
         return {
+          title: navigation.getParam('title'),
           // headerRight: <HeaderRight onPress={navigation.state.params?navigation.state.params.iconPress:null}/>,
           ...appConfig.navbar
         }

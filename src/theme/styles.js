@@ -12,13 +12,12 @@ export default {
     headerTitleStyle:{
       color: '#fff',
       fontWeight: 'normal',
-      textAlign:'center'
-    },
-    headerTitleStyle:{
-      color: '#fff',
+      textAlign:'center',
+      flex:1,
       fontWeight: 'normal',
       fontSize:14
-    }
+    },
+    headerTintColor: "#fff",
   }
 };
 

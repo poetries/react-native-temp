@@ -4,7 +4,6 @@ import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Query } from "react-apollo";
-import { Actions, Scene } from 'react-native-router-flux';
 import appConfig from '../../theme/styles'
 
 @connect(({ app }) => {
@@ -15,6 +14,7 @@ class MsgScreen extends React.Component {
         const {navigate} = navigation;
         return {
           headerTitle: '消息',
+          drawerLabel: 'Home',
           // headerRight: <HeaderRight onPress={navigation.state.params?navigation.state.params.iconPress:null}/>,
           ...appConfig.navbar
         }

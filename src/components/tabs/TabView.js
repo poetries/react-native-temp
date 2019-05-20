@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import Search from 'react-native-search-box';
 import { List, ListItem,Header,Icon } from 'react-native-elements'
-import { Actions } from 'react-native-router-flux';
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
 import TabItem from './TabItem'
 
@@ -22,7 +21,7 @@ export default class TabView extends Component {
     const {queryKeys,queryMethod} = this.props
  
     return   <ScrollableTabView
-            style={{marginTop: 0}}
+            style={{marginTop: 0,zIndex:999}}
             tabBarUnderlineColor={"#fff"}
             ref="scrollableTabView"
             tabBarInactiveTextColor='#fff'

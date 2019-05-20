@@ -4,7 +4,6 @@ import { View, Text, ScrollView, StyleSheet,ActivityIndicator,FlatList,Avatar} f
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
 import {  ListItem,Icon } from 'react-native-elements'
-import { Actions } from 'react-native-router-flux';
 
 export default class SideMenu extends Component {
   static componentName = 'SideMenu';

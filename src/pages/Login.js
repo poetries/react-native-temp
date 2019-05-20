@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withApollo } from 'react-apollo';
-import { Text, View, StyleSheet, TextInput,Alert,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput,Alert,TouchableOpacity,AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Toast, {DURATION} from 'react-native-easy-toast'
 
@@ -17,28 +17,34 @@ class Login extends Component {
             password:''
          };
     }
-    onLogin(){
+    async onLogin(){
 			const {dispatch} = this.props
 			const { navigate } = this.props.navigation;
 			const {username,password} = this.state
-			dispatch({
-				type: 'user/login',
-				payload: {
-					username,
-					password
-				},
-				callback: res=>{
-					if(res.code == 200) {
-						alert('登录成功')
-						navigate('Monitor');
-					}else {
-						this.refs.toast.show(res.message);
-					}
-				}
-			})
-			
-    }
+			// dispatch({
+			// 	type: 'user/login',
+			// 	payload: {
+			// 		username,
+			// 		password
+			// 	},
+			// 	callback: res=>{
+			// 		if(res.code == 200) {
+			// 			alert('登录成功')
+			// 			navigate('Monitor');
+			// 		}else {
+			// 			this.refs.toast.show(res.message);
+			// 		}
+			// 	}
+			// })
 
+			if(!username || !password) {
+				return this.refs.toast.show('账号密码不能为空');
+			}
+			// TEST LOGIN
+			await AsyncStorage.setItem('userToken', 'abc');
+			this.props.navigation.navigate('App');
+
+    }
   render() {
 		const { navigate } = this.props.navigation;
     return (

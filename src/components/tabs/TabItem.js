@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import Search from 'react-native-search-box';
 import { ListItem,Header,Icon } from 'react-native-elements'
-import { Actions } from 'react-native-router-flux';
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
 
 export default class TabItem extends Component {

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, ActivityIndicator,Image,StyleSheet,Dimensions,Platform } from 'react-native';
 import Search from 'react-native-search-box';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { List, ListItem,Header,Icon } from 'react-native-elements'
 import { userCenterConfig } from '../../config/userCenterConfig'
 // import Accordion from 'react-native-collapsible/Accordion';

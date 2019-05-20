@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,AsyncStorage } from 'react-native';
 import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Query } from "react-apollo";
-import { Actions, Scene } from 'react-native-router-flux';
 import appConfig from '../../theme/styles'
 
 @connect(({ app }) => {
@@ -19,10 +18,16 @@ class UserCenterScreen extends React.Component {
           ...appConfig.navbar
         }
       };
+
+    _signOutAsync = async () => {
+        await AsyncStorage.clear();
+        this.props.navigation.navigate('Auth');
+    };
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>用户中心</Text>
+                <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
             </View>
         );
     }
