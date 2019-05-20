@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rn_temp"
+        // applicationId "com.rn_temp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -151,3 +151,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+project.ext.vectoricons = [
+    iconFontNames: ['iconfont.ttf' ] //添加你需要赋值的字符文件
+]

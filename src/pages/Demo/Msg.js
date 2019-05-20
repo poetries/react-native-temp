@@ -4,28 +4,29 @@ import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Query } from "react-apollo";
-import { StackActions, NavigationActions } from 'react-navigation'; // Version can be specified in package.json
-import Color from '../../theme/color'
+import { Actions, Scene } from 'react-native-router-flux';
+import appConfig from '../../theme/styles'
 
 @connect(({ app }) => {
     return app;
 })
 class MsgScreen extends React.Component {
-    static navigationOptions = {
-        title:'消息',
-        headerStyle:{
-            backgroundColor: Color.brand.primary
-        },
-        headerTitleStyle:{
-            color: Color.background,
-            fontWeight: 'normal',
-            textAlign: 'center',
-            fontSize: 16,
-            flex:1
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const {navigate} = navigation;
+        return {
+          headerTitle: '消息',
+          // headerRight: <HeaderRight onPress={navigation.state.params?navigation.state.params.iconPress:null}/>,
+          ...appConfig.navbar
         }
       };
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+         
+        };
+      }
     render() {
-        console.log(this.props, this.context)
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>消息</Text>

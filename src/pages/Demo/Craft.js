@@ -2,26 +2,33 @@ import React from 'react';
 import { View, Text, Button,ScrollView } from 'react-native';
 import { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
+import {  ListItem,Header,Icon,Divider } from 'react-native-elements'
 import { connect } from 'react-redux';
 import { Query } from "react-apollo";
-import { StackActions, NavigationActions } from 'react-navigation'; // Version can be specified in package.json
-import Color from '../../theme/color'
+import { Actions, Scene } from 'react-native-router-flux';
+import appConfig from '../../theme/styles'
 
 @connect(({ app,report }) => ({
     report
 }))
 class CraftScreen extends React.Component {
-    static navigationOptions = {
-        title:'工艺',
-        headerStyle:{
-            backgroundColor: Color.brand.primary
-        },
-        headerTitleStyle:{
-            color: Color.background,
-            fontWeight: 'normal',
-            textAlign: 'center',
-            fontSize: 16,
-            flex:1
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const {navigate} = navigation;
+        return {
+          headerTitle: '工艺',
+          ...appConfig.navbar,
+          headerLeft: <View style={{paddingLeft:10}}>
+          <Icon
+            name='menu'
+            type='EvilIcons'
+            color="#fff"
+            underlayColor="#03a9f4"
+            onPress={()=>navigate('Login')}
+      />
+      </View>,
+      headerRight: <View style={{paddingRight:10}}>
+            <Text  style={{fontSize:22,fontFamily:'iconfont',color:'#fff'}}>{'\ue656'}</Text>
+      </View>
         }
       };
     componentDidMount(){
