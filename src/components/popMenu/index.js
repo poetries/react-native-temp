@@ -12,20 +12,37 @@ import {
 
   const { Popover,SlideInMenu } = renderers
 
-export default class PopOverMenu extends Component {
+export default class PopMenu extends Component {
   constructor(props) {
     super(props);
 
   }
 
   render() {
-    const {menus=[],triggerUnicodeIcon='',onSelect} = this.props
+    const {
+        menus=[],
+        triggerUnicodeIcon='',
+        onSelect,
+        title='',
+        showPopOver=false,
+        showBottomMenu=false
+    } = this.props
+
+    let menuProps = {}
+    if(showPopOver) {
+        menuProps.renderer= Popover 
+        menuProps.rendererProps={ placement: 'bottom',anchorStyle:{marginRight:3,marginTop:4} }
+    }
+    if(showBottomMenu) {
+        menuProps = {
+            name: "numbers",
+            renderer: SlideInMenu
+        }
+    }
     return (
-        <View>
-            <Menu
-                    renderer={Popover} 
-                    rendererProps={{ placement: 'bottom',anchorStyle:{marginRight:3,marginTop:4} }}
-                >
+        <View style={{flexDirection:'row'}}>
+            <Text  style={{color:'#fff',fontSize:14,position:'relative',left:12}}>{title}</Text>
+            <Menu {...menuProps}>
                 <MenuTrigger >
                     <Text style={{color:'#fff',fontSize:24,fontFamily:'iconfont'}}>{triggerUnicodeIcon}</Text>
                 </MenuTrigger>

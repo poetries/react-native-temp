@@ -8,8 +8,7 @@ import queryKeys from '../../config/queryKeys.json'
 import Drawer from 'react-native-drawer'
 import TabView from '../../components/tabs/TabView'
 import SideMenu from '../../components/sideMenus/SideMenu'
-import PopBottomMenu from '../../components/popMenus/BottomMenu'
-import PopOverMenu from '../../components/popMenus/PopOverMenu'
+import PopMenu from '../../components/popMenu'
 import Dialog, {
     DialogTitle,
     DialogContent,
@@ -20,6 +19,7 @@ import Dialog, {
   } from 'react-native-popup-dialog';
   import DiyIcon from '../../utils/DiyIcon';
   import appConfig from '../../theme/styles'
+  import iconMap from '../../config/unicodeIcon'
 
 @connect(({ app,report,monitor,roles }) => ({
     app,
@@ -43,52 +43,30 @@ class MonitorScreen extends React.Component {
           onPress={navigation.getParam("openSideMenu")}
       />
       </View>,
-      headerRight: <View style={{flexDirection:'row'}}>
-          <PopOverMenu
-            triggerUnicodeIcon={'\ue62e'}
+      headerRight: <View style={{flexDirection:'row',paddingRight:10}}>
+          <PopMenu
+            triggerUnicodeIcon={iconMap.add}
+            showPopOver={true}
             menus={[
               {
-                unicode: '\ue7e3',
+                unicode: iconMap.add,
                 title: '新增',
                 color: 'green'
               },
               {
-              unicode: '\ue662',
+              unicode: iconMap.edit,
               title: '编辑',
               color: '#fa1'
             },
             {
-              unicode: '\ue607',
+              unicode: iconMap.delete,
               title: '删除',
               color:'#f013'
             }
             ]}
             onSelect={val=>navigate('Login')}
           />
-          <PopBottomMenu
-            triggerUnicodeIcon={'\ue656'}
-            menus={[
-              {
-                unicode: '\u2605',
-                title: '新增',
-                color: '#f00',
-                value: 1
-              },
-              {
-                unicode: '\u2605',
-                title: '编辑',
-                color: '#fa1',
-                value: 2
-            },
-            {
-              unicode: '\u2605',
-              title: '删除',
-              color:'#f0d',
-              value: 3
-            }
-            ]}
-            onSelect={val=>alert(val)}
-          />
+          
       </View>
      
     }
@@ -151,7 +129,6 @@ class MonitorScreen extends React.Component {
                   main: { opacity:(2-ratio)/2 }
                 })}
             >
-            <TabView queryKeys={queryKeys} list={[]} {...this.props} theme={theme} />
             <ScrollView style={{paddingBottom: 20,marginTop:50 }}>
                {monitor && monitor.data.map(v=><Text key={v.customer_id}>{v.customer_id}-{v.customer_name}</Text>)}
             </ScrollView>

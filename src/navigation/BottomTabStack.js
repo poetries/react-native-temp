@@ -18,7 +18,6 @@ import AnalyseScreen from '../pages/Demo/Analyse';
 import MsgScreen from '../pages/Demo/Msg';
 import UserScreen from '../pages/Demo/UserCenter';
 
-import {HomeTabs} from './TopTabs'
 
 export default createBottomTabNavigator(
     {
@@ -46,7 +45,7 @@ export default createBottomTabNavigator(
         },
         Anylse: {
             screen:createStackNavigator({
-                screen:HomeTabs,
+                screen:AnalyseScreen,
             }),
             navigationOptions: {
                 tabBarLabel: '分析',

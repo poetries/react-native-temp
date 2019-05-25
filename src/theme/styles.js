@@ -7,15 +7,22 @@ export default {
   },
   navbar: {
     headerStyle:{
-      backgroundColor: Colors.brand.primary
+      backgroundColor: Colors.brand.primary,
+      ...Platform.select({
+        ios: {
+          borderBottomWidth: 0
+        },
+        android: {
+          elevation: 0,
+        },
+      }),
     },
     headerTitleStyle:{
       color: '#fff',
       fontWeight: 'normal',
       textAlign:'center',
       flex:1,
-      fontWeight: 'normal',
-      fontSize:14
+      fontSize:16
     },
     headerTintColor: "#fff",
   }

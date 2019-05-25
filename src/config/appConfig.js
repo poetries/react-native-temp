@@ -3,6 +3,7 @@ import theme from '../theme/color'
 export default {
     TopTabs: {
         swipeEnabled: true,
+        tabBarPosition: 'top',
         animationEnabled: true,
         lazy: true,
         tabBarOptions:{
@@ -11,11 +12,19 @@ export default {
                 backgroundColor: theme.brand.primary,
             },
             labelStyle:{
-                fontSize: 16
+                fontSize: 14
             },
+            // pressColor: '', // 被按下的tab的背景色  Android>5.0
+            // scrollEnabled: true, //tab是否能够滑动，值为true时，当tab超出屏幕宽度的时候tab能够滚动
             indicatorStyle:{
                 backgroundColor: '#fff'
-            }
+            },
+            // upperCaseLabel: false,//是否使标签大写，默认为true
+            tabStyle:{//定义tab bar中tab的样式
+                // backgroundColor:"",
+                // height:30
+                minWidth:40//tab的宽度
+            },
         },
     },
     bottomTabs: {
@@ -34,6 +43,10 @@ export default {
             },
             showLabel: true,
             showIcon: true,
+            iconStyle:{//定义icon的样式
+            },
+            // indicatorStyle:{//指示器的样式[激活条样式]
+            // },
             style:{// 整体TabBar的样式
                 borderTopWidth: 1,
                 borderTopColor: '#eee'

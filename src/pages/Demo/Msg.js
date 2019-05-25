@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,ScrollView,RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import appConfig from '../../theme/styles'
 
@@ -20,14 +20,24 @@ class MsgScreen extends React.Component {
         super(props);
     
         this.state = {
-         
+          refreshing:false
         };
       }
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <ScrollView
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    titleColor="#03a9f4"
+                    tintColor="#03a9f4"
+                    colors={["#03a9f4"]}
+                    // onRefresh={this._onRefresh}
+                  />
+                }
+             >
                 <Text>消息</Text>
-            </View>
+            </ScrollView>
         );
     }
 }

@@ -21,12 +21,6 @@ export const HomeTabs = createMaterialTopTabNavigator({
             title:'工艺',
         }
     },
-    BasicInfo2:{
-        screen:AnalyseScreen,
-        navigationOptions:{
-            title:'分析',
-        }
-    },
     BasicInfo3:{
         screen:MsgScreen,
         navigationOptions:{
@@ -41,16 +35,5 @@ export const HomeTabs = createMaterialTopTabNavigator({
     }
 },{
     ...appConfig.TopTabs,
-    navigationOptions:({navigation})=>({
-        title:'注塑机01',
-        headerStyle:{
-            backgroundColor: theme.brand.primary,
-            elevation: 0,
-		},
-		headerTitleStyle:{
-			fontWeight: 'normal',
-        },
-        headerTintColor: '#fff',
-        
-    })
+    // initialRouteName: 'BasicInfo3',
 })
