@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text,ScrollView,StyleSheet,Button } from 'react-native';
 import { connect } from 'react-redux';
 import {  ListItem,Header,Icon,Divider } from 'react-native-elements'
+import SideMenu from '../../components/sideMenus/SideMenu'
 
 export default class MyNotificationsScreen extends React.Component {
     static navigationOptions = {
@@ -17,11 +18,9 @@ export default class MyNotificationsScreen extends React.Component {
     };
   
     render() {
+      console.log(this.props)
       return (
-        <Button
-          onPress={() => this.props.navigation.goBack()}
-          title="Go back home"
-        />
+        <SideMenu theme={"#03a9f4"} {...this.props} />
       );
     }
   }

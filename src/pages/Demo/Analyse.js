@@ -5,7 +5,7 @@ import { Button } from '@ant-design/react-native';
 import appConfig from '../../theme/styles'
 import {HomeTabs} from '../../navigation/TopTabs'
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {  ListItem,Header,Icon,Divider } from 'react-native-elements'
 import PopMenu from '../../components/popMenu'
 import iconMap from '../../config/unicodeIcon'
 
@@ -16,7 +16,7 @@ class AnalyseScreen extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => {
         const {navigate} = navigation;
         return {
-          headerTitle: <View style={{flex:1,justifyContent:'center',flexDirection:'row'}}>
+          headerTitle: <View style={{justifyContent:'center',flex:1,flexDirection:'row',alignItems:'center'}}>
               <PopMenu
               triggerUnicodeIcon={iconMap.dropMenu}
               title={navigation.getParam("seleVal","今天")}
@@ -40,6 +40,15 @@ class AnalyseScreen extends React.Component {
               onSelect={val=>navigation.setParams({seleVal:val.title})}
             />
           </View>,
+          headerLeft: <View style={{paddingLeft:10}}>
+              <Icon
+              name='menu'
+              type='EvilIcons'
+              color="#fff"
+              underlayColor="#03a9f4"
+              onPress={navigation.getParam("openSideMenu")}
+          />
+      </View>,
           ...appConfig.navbar,
           headerStyle: {
             ...appConfig.navbar.headerStyle,
@@ -78,14 +87,20 @@ class AnalyseScreen extends React.Component {
         this.state = {
          
         };
-      }
+    }
+    componentDidMount() {
+      this.props.navigation.setParams({ openSideMenu: this._openSideMenu});
+    }
+    _openSideMenu = ()=>{
+      this.props.navigation.openDrawer()
+    }
       onRefresh() {
         // this.loadData(true);
     }
     render() {
         return (
           <SafeAreaView style={{ flex: 1 }}>
-               <HomeTabs />
+              <HomeTabs />
           </SafeAreaView>
         );
     }

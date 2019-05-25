@@ -6,7 +6,7 @@ import {
     StackNavigator,
     createDrawerNavigator,
     createSwitchNavigator
-} from 'react-navigation'; // Version can be specified in package.json
+} from 'react-navigation'; 
 import IconFeather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ThemeFlags} from '../theme/themeFactory'
@@ -17,7 +17,6 @@ import CraftScreen from '../pages/Demo/Craft';
 import AnalyseScreen from '../pages/Demo/Analyse';
 import MsgScreen from '../pages/Demo/Msg';
 import UserScreen from '../pages/Demo/UserCenter';
-
 
 export default createBottomTabNavigator(
     {
@@ -45,7 +44,7 @@ export default createBottomTabNavigator(
         },
         Anylse: {
             screen:createStackNavigator({
-                screen:AnalyseScreen,
+                screen:AnalyseScreen
             }),
             navigationOptions: {
                 tabBarLabel: '分析',
@@ -79,7 +78,7 @@ export default createBottomTabNavigator(
                     return <IconFeather name={'user'} size={22} style={{color:tintColor}}/>
                 }
             }
-        },
+        }
     },
     {
        ...appConfig.bottomTabs

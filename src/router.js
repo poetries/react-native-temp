@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { 
     createStackNavigator, 
-    createSwitchNavigator
+    createSwitchNavigator,
+    createDrawerNavigator
 } from 'react-navigation'; 
 import { BackHandler, Animated, Easing } from 'react-native'
 import {
@@ -11,41 +12,9 @@ import {
     reduxifyNavigator
 } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
-
-import AuthStack from './navigation/AuthStack'
-import BottomTabStack from './navigation/BottomTabStack'
-import AppStack from './navigation/AppStack'
-
-const AppNavigator = createStackNavigator(
-    {
-        // 底部Tabs切换相关
-        Main: {
-            screen: BottomTabStack, 
-            navigationOptions: ({  navigation }) => {
-                return {
-                    header: null
-                }
-            }
-        },
-        ...AppStack
-    }, 
-    {
-        initialRouteName: 'Main',
-        headerMode: 'screen'
-    }
-);
-
- const RootStack = createSwitchNavigator({
-    App: AppNavigator,
-    Auth: AuthStack
-  },
-  {
-    initialRouteName: 'Auth',
-  })
-
+import RootStack from './navigation'
 
 export const routerReducer = createNavigationReducer(RootStack)
-
 export const routerMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.router
