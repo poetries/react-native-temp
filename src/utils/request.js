@@ -1,4 +1,5 @@
 import hash from 'hash.js';
+import {showMsg} from '../utils'
 import { NavigationActions } from 'react-navigation';
 import { getOrigin } from './config'
 
@@ -44,6 +45,7 @@ export default function request(url, option) {
     const options = {
         ...option,
     };
+    console.log('请求地址',url)
     /**
      * Produce fingerprints based on url and parameters
      * Maybe url has the same parameters
@@ -62,7 +64,7 @@ export default function request(url, option) {
         if (!(newOptions.body instanceof FormData)) {
             newOptions.headers = {
                 Accept: 'application/json',
-                'Content-Type': 'application/json; charset=utf-8',
+                'Content-Type': 'application/json;charset=utf-8',
                 ...newOptions.headers,
             };
             newOptions.body = JSON.stringify(newOptions.body);
@@ -86,7 +88,8 @@ export default function request(url, option) {
             return response.json();
           })
           .then(res=>{
-            
+            console.log('参数',newOptions);
+            console.log('返回结果',res);
             // 401统一拦截到login
             if(res.code == 401) {
               // https://reactnavigation.org/docs/zh-Hans/navigating-without-navigation-prop.html
@@ -94,31 +97,35 @@ export default function request(url, option) {
               window.g_app._store.dispatch(toLogin)
             }
             if(res.code == 500) {
-              alert('服务器繁忙，请稍后再试')
+              showMsg('服务器繁忙，请稍后再试')
             }
             // 接口没权限提示
             if(res.code == 403) {
-              alert(res.message)
+              showMsg(res.message)
+            }
+            // 普通报错
+            if(res.code ==400) {
+              showMsg(res.message)
             }
             return res
           })
           .catch(e => {
+            if(e.name == "TypeError"){
+              return showMsg('没有网络，请检查您的网络')
+            }
             const status = e.name;
             if (status === 401) {
-              alert('您还没有登录')
-              return;
+              return showMsg('您还没有登录')
             }
             // environment should not be used
             if (status === 403) {
-              alert('抱歉，没有权限访问')
-              return;
+              return showMsg('抱歉，没有权限访问')
             }
             if (status <= 504 && status >= 500) {
-              alert('抱歉，服务器出错了')
-              return;
+              return showMsg('抱歉，服务器出错了')
             }
             if (status >= 404 && status < 422) {
-              alert('抱歉，接口不存在，请联系管理员')
+              showMsg('抱歉，接口不存在，请联系管理员')
             }
           });
 }
