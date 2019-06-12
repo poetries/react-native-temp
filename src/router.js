@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { 
     createStackNavigator, 
     createSwitchNavigator,
-    createDrawerNavigator
+    createDrawerNavigator,
+    NavigationActions
 } from 'react-navigation'; 
 import { BackHandler, Animated, Easing } from 'react-native'
 import {
