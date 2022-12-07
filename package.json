@@ -11,7 +11,7 @@
     "dva-core": "^1.4.0",
     "hash.js": "^1.1.7",
     "native-echarts": "^0.5.0",
-    "qs": "^6.7.0",
+    "qs": "^6.7.3",
     "react": "16.6.3",
     "react-native": "0.57.8",
     "react-native-actionsheet": "^2.4.2",
